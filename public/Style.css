@@ -1,8 +1,9 @@
-
-
+body{
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+}
+/*https://css-tricks.com/snippets/css/complete-guide-grid/*/
 /*källa : http://www.java2s.com/example/html-css/css-widget/create-hexagon-shape-with-border.html*/
 .hexagon {
-    display: inline-block;
     position: relative;
     width: 190px;
     height: 109.70px;
@@ -10,6 +11,8 @@
     margin: 54.85px 0;
     border-left: dashed 10px black;
     border-right: dashed 10px black;
+    margin-right: 50px;
+    
  }
  .hexagon:before,
  .hexagon:after {
