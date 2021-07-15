@@ -1,17 +1,15 @@
-"use strict";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Hexagon from 'react-hexagon';
 
-window.addEventListener("load", ()=>
-{
-    let HexMal = document.createElement("div");
-    let HexaBox = document.querySelector(".hexcon");
-
-    HexMal.classList.add("hexagon");
-    console.log(HexaBox);
-    console.log(HexMal);
-
-    HexaBox.appendChild(HexMal.cloneNode(true));
-    HexaBox.appendChild(HexMal.cloneNode(true));
-    HexaBox.appendChild(HexMal.cloneNode(true));
-    HexaBox.appendChild(HexMal.cloneNode(true));
-    HexaBox.appendChild(HexMal.cloneNode(true));
-});
+ReactDOM.render(
+    <React.StrictMode>
+      <div className="row">
+        <Hexagon style={{stroke: '#b0b0b0', strokeDasharray: '13'}}>
+          <text>test lol xD</text>
+        </Hexagon>
+        <Hexagon style={{stroke: '#b0b0b0', strokeDasharray: '13'}}></Hexagon>
+      </div>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
