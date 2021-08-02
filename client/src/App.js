@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Hexagon from 'react-hexagon';
+//import Hexagon from 'react-hexagon';
 
 class App extends Component {
   constructor(props) {
@@ -10,8 +10,9 @@ class App extends Component {
 
   callAPI(){
     fetch("http://localhost:9000/ServerIndex")
-        .then(res => res.text())
+        .then(res => res.json())
         .then(res => this.setState({ apiResponse: res}));
+      //console.log(fetch("http://localhost:9000/ServerIndex"));
   }
 
   componentWillMount(){
@@ -19,11 +20,28 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-          {this.state.apiResponse}
-      </div>
-    );
+    console.log(this.state.apiResponse.test);
+    if (this.state.apiResponse.test) {
+      return (
+        <div className="App">
+            <h1>woowzers tu</h1>
+        </div>
+      );  
+    }
+    else if (!this.state.apiResponse.test){
+      return (
+        <div className="App">
+            <h1>nah famsquad</h1>
+        </div>
+      );
+    }
+    else{
+      return(
+        <div className="App">
+            <h1>frigg</h1>
+        </div>
+      );
+    }
   }
 }
 
