@@ -21,21 +21,27 @@ class App extends Component {
   RowBuilder(){
     return <h1>owo</h1>;
     //return <Grid container direction="row" className="row"></Grid>
+    //behöver jag fylla dem med hexagoner nu?
+  }
+
+  CollBuilder(rows){
+    //gör en coll sedan fyll den med så många rows som det behövs
+  }
+
+  GridBuilder(colls, rows){
+    //kalla på coll builder i en loop
   }
 
   MaxCollCounter(TheGrid) {
     let lenny = 1;
     var GridData = TheGrid.GridList;
-    console.log(TheGrid.GridList);
 
     if(TheGrid !== ""){
-      console.log("fuk");
       for (let index = 0; index < GridData.length; index++) {
         const item = GridData[index];
-        if (lenny > item.Grid[1]){
+        if (lenny < item.Grid[1]){
           lenny = item.Grid[1];
         }
-        console.log("wow");
       }
       return lenny;
     }
@@ -49,8 +55,8 @@ class App extends Component {
     var Colls = [];
     let lenny = this.MaxCollCounter(this.state.apiResponse);
 
-    for (let index = 0; index < lenny; index++) {
-      Colls.push(this.RowBuilder()); //it not do the do
+    for (let index = 0; index < lenny; index++) {//whot nu?
+      Colls.push(this.RowBuilder());
     }
 
 
