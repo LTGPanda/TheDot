@@ -25,27 +25,32 @@ class App extends Component {
 
   MaxCollCounter(TheGrid) {
     let lenny = 1;
-    console.log(TheGrid);//måste converta json till iterateble array
+    var GridData = TheGrid.GridList;
+    console.log(TheGrid.GridList);
 
-    //var TheList = this.state.apiResponse.GridList;
-
-    /*for (let index = 0; index < TheGrid.length; index++) {
-      /*const item = TheGrid[index];
-      if (lenny > item.Grid[1]){
-        lenny = item.Grid[1];
+    if(TheGrid !== ""){
+      console.log("fuk");
+      for (let index = 0; index < GridData.length; index++) {
+        const item = GridData[index];
+        if (lenny > item.Grid[1]){
+          lenny = item.Grid[1];
+        }
+        console.log("wow");
       }
-      console.log("wow");
-    }*/
-    return lenny;
+      return lenny;
+    }
+    else{
+      //en funktion ifall gridlist saknar eller it need?
+      return 0;
+    }
   }
 
   render() {
-    //console.log(this.state.apiResponse.GridList);
     var Colls = [];
-    let lenny = this.MaxCollCounter(this.state.apiResponse.GridList);
+    let lenny = this.MaxCollCounter(this.state.apiResponse);
 
     for (let index = 0; index < lenny; index++) {
-      Colls.push(this.RowBuilder());
+      Colls.push(this.RowBuilder()); //it not do the do
     }
 
 
