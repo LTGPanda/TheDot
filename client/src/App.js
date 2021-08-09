@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Hexagon from 'react-hexagon';
+import Grid from '@material-ui/core/Grid';
 
 class App extends Component {
   constructor(props) {
@@ -19,17 +20,28 @@ class App extends Component {
   }
 
   RowBuilder(){
-    return <h1>owo</h1>;
-    //return <Grid container direction="row" className="row"></Grid>
+    return <Grid container direction="row" className="row"></Grid>
     //behöver jag fylla dem med hexagoner nu?
   }
 
   CollBuilder(rows){
     //gör en coll sedan fyll den med så många rows som det behövs
+    var Coll = [];
+
+    for (let index = 0; index < rows; index++) {
+      Coll.push(this.RowBuilder());      
+    }
+    return Coll;
   }
 
   GridBuilder(colls, rows){
-    //kalla på coll builder i en loop
+    //kalla på coll builder i en loop och får den i the coll ffs
+    var Grid = [];
+    for (let index = 0; index < colls; index++) {
+      Grid.push(this.CollBuilder(rows));
+    }
+
+    return Grid;
   }
 
   MaxCollCounter(TheGrid) {
