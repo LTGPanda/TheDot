@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  margin: 0;
+}
+
+#contest{
+  padding: 0 15px; font-size: 16px; max-width: 1000px; margin: 0 auto;/*
+  width: 50px;
+  overflow: hidden;*/
+}
+
+#contest svg{
+  width: 33.3333%;
+}
+
+.row:nth-child(even)
+{
+margin-left: 33.333333334%;
+margin-top: -10.3%;
+}
+
+#root div.row + div.row{
+margin-top: -10.3%;
+}
+
+.row{
+overflow: hidden;
+}
+
+.text{
+text-anchor: middle;
+pointer-events:painted;
+}

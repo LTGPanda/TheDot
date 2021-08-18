@@ -19,32 +19,7 @@ class App extends Component {
     this.callAPI();
   }
 
-  RowBuilder(){
-    return <Grid container direction="row" className="row"></Grid>
-    //behöver jag fylla dem med hexagoner nu?
-  }
-
-  CollBuilder(rows){
-    //gör en coll sedan fyll den med så många rows som det behövs
-    var Coll = [];
-
-    for (let index = 0; index < rows; index++) {
-      Coll.push(this.RowBuilder());      
-    }
-    return Coll;
-  }
-
-  GridBuilder(colls, rows){
-    //kalla på coll builder i en loop och får den i the coll ffs
-    var Grid = [];
-    for (let index = 0; index < colls; index++) {
-      Grid.push(this.CollBuilder(rows));
-    }
-
-    return Grid;
-  }
-
-  MaxCollCounter(TheGrid) {
+  MaxRowCounter(TheGrid) {
     let lenny = 1;
     var GridData = TheGrid.GridList;
 
@@ -63,16 +38,35 @@ class App extends Component {
     }
   }
 
-  render() {
-    var Colls = [];
-    let lenny = this.MaxCollCounter(this.state.apiResponse);
+  RowBuilder(){
+    let dia = 50;
 
-    for (let index = 0; index < lenny; index++) {//whot nu?
-      Colls.push(this.RowBuilder());
+    return (
+      <Grid container direction="row" className="row">
+        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
+        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
+        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
+      </Grid>
+    );
+  }
+
+  ColBuilder(Row){
+    var row = [];
+    for (let index = 0; index < Row; index++) {
+      row.push(this.RowBuilder());
     }
 
+    return row;
+  }
 
-    return Colls;
+  render() {
+    let lenny = this.MaxRowCounter(this.state.apiResponse);
+
+    return (
+    <Grid container justifyContent="center" alignItems="center" direction="column">
+      {this.ColBuilder(lenny)}
+    </Grid>
+    );
   }
 }
 
