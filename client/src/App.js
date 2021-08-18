@@ -19,14 +19,34 @@ class App extends Component {
     this.callAPI();
   }
 
-  MaxRowCounter(TheGrid) {
+  MaxColCounter(TheGrid) {
+    let lenny = 0;
+    var GridData = TheGrid.GridList;
+
+    if(TheGrid !== ""){
+      for (let index = 0; index < GridData.length; index++) {
+        const item = GridData[index];
+        if (lenny < item.Grid[0]){
+          lenny = item.Grid[0];
+        }
+      }
+      return lenny;
+    }
+    else{
+      //en funktion ifall gridlist saknar eller it need?
+      return 0;
+    }
+  }
+
+  MaxItemCounter(TheGrid, Row) {
     let lenny = 1;
     var GridData = TheGrid.GridList;
 
     if(TheGrid !== ""){
       for (let index = 0; index < GridData.length; index++) {
         const item = GridData[index];
-        if (lenny < item.Grid[1]){
+
+        if (item.Grid[0] === Row && lenny < item.Grid[1]) {
           lenny = item.Grid[1];
         }
       }
@@ -38,14 +58,26 @@ class App extends Component {
     }
   }
 
-  RowBuilder(){
+  ItemRowBuilder(Row, TheGrid){
+    var GridData = TheGrid.GridList;
+    var RowL = [];
+    let lenny = this.MaxItemCounter(TheGrid, Row);
     let dia = 50;
 
+    console.log(Row);
+
+    if (GridData !== ""){
+      for (let index = 0; index < lenny; index++) {
+        RowL.push(<Hexagon style={{stroke: 'orange'}} diagonal={dia}/>);
+      }
+    }
+    return RowL;
+  }
+
+  RowBuilder(Items){
     return (
       <Grid container direction="row" className="row">
-        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
-        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
-        <Hexagon style={{stroke: 'orange'}} diagonal={dia}/>
+        {this.ItemRowBuilder(Items, this.state.apiResponse)}
       </Grid>
     );
   }
@@ -53,14 +85,14 @@ class App extends Component {
   ColBuilder(Row){
     var row = [];
     for (let index = 0; index < Row; index++) {
-      row.push(this.RowBuilder());
+      row.push(this.RowBuilder(index));
     }
 
     return row;
   }
 
   render() {
-    let lenny = this.MaxRowCounter(this.state.apiResponse);
+    let lenny = this.MaxColCounter(this.state.apiResponse);
 
     return (
     <Grid container justifyContent="center" alignItems="center" direction="column">
