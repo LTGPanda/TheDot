@@ -30,7 +30,7 @@ class App extends Component {
           lenny = item.Grid[0];
         }
       }
-      return lenny;
+      return lenny + 1;
     }
     else{
       //en funktion ifall gridlist saknar eller it need?
@@ -50,7 +50,7 @@ class App extends Component {
           lenny = item.Grid[1];
         }
       }
-      return lenny;
+      return lenny + 1;
     }
     else{
       //en funktion ifall gridlist saknar eller it need?
@@ -58,17 +58,44 @@ class App extends Component {
     }
   }
 
-  ItemRowBuilder(Row, TheGrid){
+  ItemsForRow(Row, TheGridData){
+    var Items = [];
+
+    for (let index = 0; index < TheGridData.length; index++) {
+      if(TheGridData[index].Grid[0] === Row){
+        Items.push(TheGridData[index]);
+      }
+    }
+    return Items;
+  }
+
+  ItemRowBuilder(Row, TheGrid){// borde fixa en max width
     var GridData = TheGrid.GridList;
     var RowL = [];
     let lenny = this.MaxItemCounter(TheGrid, Row);
     let dia = 50;
+    var Items = this.ItemsForRow(Row, GridData);
 
-    console.log(Row);
+    
+    console.log(GridData);
+    console.log(Items);
 
     if (GridData !== ""){
-      for (let index = 0; index < lenny; index++) {
-        RowL.push(<Hexagon style={{stroke: 'orange'}} diagonal={dia}/>);
+      for (let index = 0; index < lenny; index++) {//<text x="50%" y="50%">Sadge</text>
+        let Noped = true;
+        console.log(Row + " : " + index);
+        for (let y = 0; y < Items.length; y++) {
+          if(Items[y].Grid[1] === index)
+          {
+            console.log("Dooded");
+            console.log(Row + " : " + index + "wow");
+            RowL.push(<Hexagon style={{stroke: 'orange'}} diagonal={dia} className="Hex"><text x="50%" y="50%">Sadge</text></Hexagon>);
+            Noped = false;
+          }
+        }
+        if(Noped){
+          RowL.push(<Hexagon style={{stroke: 'orange'}} diagonal={dia} className="Hex"></Hexagon>);
+        }
       }
     }
     return RowL;

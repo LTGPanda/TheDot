@@ -28,37 +28,43 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 body{
+  overflow: hidden;
   margin: 0;
 }
 
 #contest{
   padding: 0 15px; font-size: 16px; max-width: 1000px; margin: 0 auto;/*
-  width: 50px;
-  overflow: hidden;*/
+  width: 50px;*/
+  overflow: hidden;
+}
+
+#root{
+  position: absolute;
+  min-width: 100%;
+  /*overflow: hidden;*/
+}
+
+.Hex{
+  max-width: 250px;
+  text-anchor: middle;
+  pointer-events:painted;
 }
 
 #contest svg{
-  width: 33.3333%;
+  /*width: 33.3333%;*/
 }
 
 .row:nth-child(even)
 {
-margin-left: 33.333333334%;
-margin-top: -10.3%;
+  margin-left: 13%;
+  /*margin-left: 33.333333334%;*/
+  margin-top: -4%;
 }
 
+
 #root div.row + div.row{
-margin-top: -10.3%;
+margin-top: -4%;
 }
 
 .row{
