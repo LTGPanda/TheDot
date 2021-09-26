@@ -49,6 +49,7 @@ body{
   max-width: 250px;
   text-anchor: middle;
   pointer-events:painted;
+  font-size: 7px;
 }
 
 #contest svg{
@@ -69,9 +70,4 @@ margin-top: -4%;
 
 .row{
 overflow: hidden;
-}
-
-.text{
-text-anchor: middle;
-pointer-events:painted;
 }

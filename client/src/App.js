@@ -89,7 +89,10 @@ class App extends Component {
           {
             console.log("Dooded");
             console.log(Row + " : " + index + "wow");
-            RowL.push(<Hexagon style={{stroke: 'orange'}} diagonal={dia} className="Hex"><text x="50%" y="50%">Sadge</text></Hexagon>);
+            RowL.push(
+            <Hexagon style={{stroke: 'orange'}} diagonal={dia} className="Hex">
+              <text x="50%" y="30%">{Items[y].Name} : {Items[y].Tier}</text>
+              <text x="50%" y="40%">wow lol xd</text></Hexagon>);
             Noped = false;
           }
         }
